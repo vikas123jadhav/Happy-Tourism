@@ -1,0 +1,174 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row r1">
+            <div class="col-md-6 offset-md-3">
+                <div class="c text-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4375/4375479.png" alt="" class="profile-image">
+                </div>
+                <h1 class="text-center">Update UR Profile </h1>
+                <br><br>
+                <form [formGroup]="registerform" (ngSubmit)="formSubmit('create')">
+                    <div class="sm-jumbotron">
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="firstname" class="form-label"> Name </label>
+                                <input type="text" class="form-control" id="NAME" formControlName="NAME"
+                                    [(ngModel)]="user.name">
+                                <div class="form-text text-danger"
+                                    *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)">
+                                    Name is Required
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Name.errors?.['noSpecialChar'] && (Name.touched || Name.dirty)">
+                                    Special Characters Not allowed , allows Space only
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Name.errors?.['minlength'] && (Name.touched || Name.dirty)">
+                                    Name should be between 2
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Name.errors?.['pattern'] && (Name.touched || Name.dirty)">
+                                    Name should start with Alphabet
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="birthdate" class="form-label"> Age</label>
+                                <input type="text" class="form-control" id="AGE" formControlName="AGE"
+                                    [(ngModel)]="user.age">
+                                <div class="form-text text-danger"
+                                    *ngIf="Age.errors?.['required'] && ( Age.touched || Age.dirty)">
+                                    Age Required
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Age.errors?.['pattern'] && ( Age.touched || Age.dirty)">
+                                    Must have only digits
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Age.errors?.['min'] && ( Age.touched || Age.dirty)">
+                                    Min age 10 only
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Age.errors?.['max'] && ( Age.touched || Age.dirty)">
+                                    Mix age 50 only
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="lastname" class="form-label"> User Name </label>
+                                <input type="text" class="form-control" id="USERNAME" formControlName="USERNAME"
+                                    [(ngModel)]="user.userName">
+                                <div class="form-text text-danger"
+                                    *ngIf="Userame.errors?.['userNameSpeChar'] && ( Userame.touched || Userame.dirty)">
+                                    Only @ .(dot only before 'com') symbol Allowed
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Userame.errors?.['required'] && ( Userame.touched || Userame.dirty)">
+                                    Userame required
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Userame.errors?.['pattern'] && ( Userame.touched || Userame.dirty)  && !Userame.errors?.['userNameSpeChar']">
+                                    Invalid email-Must End with @gmail.com, @solugenix.com,@yahoo.com
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col    mb-3">
+                                <label for="birthdate" class="form-label"> Password</label>
+                                <input type="password" class="form-control" id="PASSWORD" readonly
+                                    formControlName="PASSWORD" [(ngModel)]="user.password">
+                                <div class="form-text text-danger"
+                                    *ngIf="Password.errors?.['required'] && ( Password.touched || Password.dirty)">
+                                    Password Required
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Password.errors?.['pattern'] && ( Password.touched || Password.dirty)">
+                                    Must have 1-Upper, 1-lower,1-special char,1-digit
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Password.errors?.['minlength'] && ( Password.touched || Password.dirty)">
+                                    Min chars 8 only
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Password.errors?.['maxlength'] && ( Password.touched || Password.dirty)">
+                                    Max chars 16 only
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row from-group">
+                            <div class="col    mb-3">
+                                <label for="confirm_password" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" appConfirmEqualValidator="PASSWORD" required
+                                    name="confirmPassword" required id="confirmPassword"
+                                    formControlName="confirmPassword">
+                                <div class="form-text text-danger"
+                                    *ngIf="ConfirmPassword.errors?.['required'] && ( ConfirmPassword.touched || ConfirmPassword.dirty)">
+                                    Confirm Password is Required
+                                </div>
+                                <div class="form-text text-danger" *ngIf="ConfirmPassword.errors?.['notEqual'] && ( ConfirmPassword.touched || ConfirmPassword.dirty) 
+                                            && !ConfirmPassword.errors?.['required']">
+                                    Password and Confirm Password does not Match
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="EMAIL" formControlName="EMAIL"
+                                    [(ngModel)]="user.email">
+                                <div class="form-text text-danger"
+                                    *ngIf="Email.errors?.['userNameSpeChar'] && ( Email.touched || Email.dirty)">
+                                    Only @ .(dot only before 'com') symbol Allowed
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Email.errors?.['required'] && ( Email.touched || Email.dirty)">
+                                    Email required
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="Email.errors?.['pattern'] && ( Email.touched || Email.dirty)  && !Email.errors?.['userNameSpeChar']">
+                                    Invalid email-Must End with @gmail.com, @solugenix.com,@yahoo.com
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="mobile" class="form-label">Phone Number</label>
+                                <input type="text" class="form-control" id="mobile" formControlName="MOBILENO"
+                                    [(ngModel)]="user.mobile">
+                                <div class="form-text text-danger"
+                                    *ngIf="MobileNo.errors?.['required'] && ( MobileNo.touched || MobileNo.dirty)">
+                                    Phone number required
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="MobileNo.errors?.['pattern'] && ( MobileNo.touched || MobileNo.dirty)">
+                                    Must have only digits
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="MobileNo.errors?.['minlength'] && ( MobileNo.touched || MobileNo.dirty)">
+                                    Min numbers 10 only
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="MobileNo.errors?.['maxlength'] && ( MobileNo.touched || MobileNo.dirty)">
+                                    Max numbers 10 only
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="  text-center"> 
+                                <button type="submit" mat-raised-button color="primary" (click)="update('updation')"
+                                    [disabled]="registerform.invalid">Update</button>
+                                <button class="btn btn-danger cancle"
+                                    [routerLink]="'/profile'">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

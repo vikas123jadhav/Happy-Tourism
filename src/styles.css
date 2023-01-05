@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  
+     /* background-color: rgba(128, 128, 128, 0.341);     */
+ }
+
+@import "../node_modules/bootstrap/dist/css";
+
+.text-center{
+    text-align: center;
+}
+.mt{
+    margin-top: 20px;
+}
+
+/* .container{
+    padding-top: 20px;
+    align-items: center;
+} */
+
+.form-control{
+    border-color: rgb(121, 108, 108);
+    background-color: rgba(128, 128, 128, 0.01);      
+}
+
+html, body { height: 100%; }
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+
+    
+} */
+
+.background{
+    /* background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuTkHZGpp-s9fVaK8xlbyzdQ5Oa6_1sYmp1w&usqp=CAU")repeat center center; */
+
+    width: 100%;
+   
+       background-size: cover;
+   
+   min-height: 100vh;
+   
+    
+}
+
+
+.modal-backdrop.show {
+    opacity: .0;
+}

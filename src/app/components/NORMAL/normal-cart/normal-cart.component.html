@@ -1,0 +1,150 @@
+<div class="container">
+  <ng-container *ngIf="cartPackages.length!=0">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Package Information</th>
+              <th>Picture</th>
+              <th>Slots Booking</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cartPackages ; let i=index">
+              <td>{{i+1}}</td>
+              <td>
+                {{item.packageName}},<br>
+                {{item.location}}, <br>
+                {{item.startDate}} to {{item.endDate}}, <br>
+                {{item.noOfPeoples}}-peoples, <br>
+                {{item.cost | currency:'INR'}}
+              </td>
+              <td>
+                <img class="imgPath" [src]="item.imgPath" alt="">
+              </td>
+              <td class="totalBill" *ngIf="item.isAvailable && item.isPackageActive && item.slots!=0">
+                <p class="blue">TotalBill : {{item.totalBill}}</p>
+                <img (click)="decrement(i)" class="dec" src="https://cdn-icons-png.flaticon.com/512/2569/2569198.png"
+                   alt="-"> &nbsp;
+                {{item.noOfSlots}} &nbsp;
+                <img (click)="increment(i)" class="inc" src="https://cdn-icons-png.flaticon.com/512/4315/4315609.png"
+                   alt="+"> <br><br>
+                <strong *ngIf="item.slots<=item.noOfSlots" class="red">Only {{item.slots}} Slots
+                  Available</strong>
+              </td>
+              <td class="ntavl" *ngIf="!item.isAvailable || !item.isPackageActive || item.slots==0">
+                <strong class="red">Not Available</strong>
+              </td>
+              <td style="padding-top:30px;">
+                <a (click)="deleteFromCart(item.id,item.totalBill)"> <img
+                    src="https://cdn-icons-png.flaticon.com/128/6861/6861362.png" alt="Delete"
+                    class="delImg" title="Delete"> </a> &nbsp;
+                <a *ngIf="item.isAvailable && item.isPackageActive && item.slots!=0" (click)="toPay(i)">
+                  <img src="https://cdn-icons-png.flaticon.com/512/2534/2534679.png" alt="Book Now"
+                   class="book" title="Book Package">
+                </a>
+                <a *ngIf="!item.isAvailable || !item.isPackageActive || item.slots==0"> <img
+                    src="https://cdn-icons-png.flaticon.com/512/5129/5129345.png" alt="Not Available"
+                    class="notAval" title="Not Available"> </a> &nbsp;
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="cartDiv">
+          <button (click)="removeAllCart()" class="btn btn-danger">Empty Cart</button> &nbsp;
+          <button routerLink="/normalPackages" class="btn btn-primary">Shop More</button> &nbsp;
+          <button class="btn btn-success" (click)="toCheckOutPay()">Checkout</button> &nbsp;
+          <strong>Grand Total : {{grandTotal | currency:'INR'}}</strong> &nbsp;
+        </div>
+      </div>
+    </div>
+    <p class="note"><b>Note: </b>The Out of Stock, Not Available, Out-Dated packages from Cart are not applicable for CheckOut.</p>
+  </ng-container>
+
+  <!-- <ng-container *ngIf="popup">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">{{package.packageName}}</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div style="height: 200px">
+              <div style="float: left;">
+                <img [src]="package.imgPath" alt="" style="width: 200px; align-self: center; height: 200px;">
+              </div>
+              <div style="float: left;">
+                <p>
+                <table class="table table-hover" style="margin-left: 20px;width: 200px;">
+                  <strong></strong>
+                  <tr>
+                    <td><strong>Location -</strong></td>
+                    <td align="center"> {{package.location}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Start Date -</strong></td>
+                    <td align="center"> {{package.startDate}} </td>
+                  </tr>
+                  <tr>
+                    <td><strong>End Date -</strong></td>
+                    <td align="center"> {{package.endDate}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Available -</strong></td>
+                    <td align="center">{{package.slots}}-slots</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Count -</strong></td>
+                    <td align="center"> {{package.noOfPeoples}}-peoples</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Price -</strong></td>
+                    <td align="center">{{package.cost | currency:'INR'}}</td>
+                  </tr>
+                </table>
+                <div style="margin-left: 30px;width: 200px;border-color: blue;">
+                  <p>
+                    <strong style="color:blue ;">Total Bill : </strong> &nbsp; &nbsp; &nbsp; <strong
+                      style="color:red ;"> {{totalBill | currency:'INR'}} </strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <br>
+            </div>
+
+            <button (click)="dec(quantity)">-</button>&nbsp;&nbsp;&nbsp;
+            <span>{{quantity}}</span> &nbsp;&nbsp;&nbsp;
+            <button (click)="inc(quantity)">+</button>
+            <br><br>
+            <p *ngIf="msg!=''" style="color: red;">{{msg}}</p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container> -->
+
+  <ng-container *ngIf="cartPackages.length==0">
+    <div class="card">
+      <strong class="card-title">My Cart</strong>
+    </div>
+    <div class="center">
+      <img
+        src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+        alt=""><br>
+      <strong class="carEmpty">Your Cart is empty!</strong>
+      <h5>Add item to it now</h5>
+      <button (click)="toPackage()" class="btn btn-primary" routerLink='normalPackages'>Book Now</button>
+    </div>
+  </ng-container>
+  
+</div>

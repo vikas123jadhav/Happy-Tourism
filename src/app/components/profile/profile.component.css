@@ -1,0 +1,46 @@
+.container {
+    padding-left: 250px;
+    padding-top: 100px;
+    text-align: center;
+}
+
+h1 {
+    color: purple;
+    font-size: 20px
+}
+
+.call {
+    padding-left: 250px;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.profile-image {
+    max-width: 150px;
+    max-height: 150px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+
+
+.table {
+    width: 500px;
+}
+
+
+.table tr td {
+    padding: 10px 10px;
+    width: 200px;
+    border-collapse: collapse;
+    padding-left: 20px;
+}
+
+.cap {
+    text-transform: capitalize;
+}
+
+tbody {
+    text-align: left;
+    left: 20px;
+}

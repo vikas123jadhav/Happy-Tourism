@@ -1,0 +1,225 @@
+.flip-box {
+  width: 300px;
+  height: 200px;
+  perspective: 1000px;
+  position: relative;
+}
+
+body {
+  height: 100vh;
+  width: 100wh;
+}
+
+.flip-box-inner {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-box-front,
+.flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+}
+
+.flip-box-back {
+  transform: rotateY(180deg);
+}
+
+.flip-box {
+  display: inline-block;
+  margin-left: 170px;
+  margin-top: 100px;
+}
+
+.head {
+  background-image: url("https://ujoydisplay.com/wp-content/uploads/2021/02/Glass-showcase-for-watch-shop_ujoydisplay.com-1.jpeg");
+  background-size: fill;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 16cm;
+}
+
+button {
+  font-size: 110%;
+  min-width: min-content;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-sidenav-content {
+  font-size: 200%;
+  text-align: center;
+}
+
+.menu {
+  width: 150px;
+  height: 100vmax;
+  margin-top: -14px;
+  background-color: rgb(0, 6, 8);
+  color: rgb(245, 249, 249);
+  font-size: x-large;
+  font-style: normal;
+  position: absolute;
+
+}
+
+.menu ul li {
+  list-style-type: none;
+  padding: 10px;
+  line-height: 50px;
+}
+
+.flip-box {
+  position: relative;
+  margin-top: 100px;
+}
+
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.list {
+  position: relative;
+  display: flex;
+  margin-left: 300px;
+}
+
+.list li {
+  list-style: none;
+  margin-left: 150px;
+}
+
+.nex {
+  height: 39px;
+  margin: -21px, 30px;
+  margin-top: 89px;
+  margin-left: -23px;
+  background-color: rgb(245, 243, 239);
+}
+
+.imgClass {
+  width: 100%;
+  height: 400px;
+  padding-top: 100px;
+  padding-left: 60px;
+
+}
+
+.carousel-container {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  width: 800px;
+  border-radius: 15px;
+  padding-left: 150px;
+}
+
+.carousel-container img {
+  display: none;
+  border-radius: 15px;
+}
+
+.carousel-container img.image-active {
+  display: block;
+  width: 100%;
+  height: 400px;
+}
+
+.carousel-dot-container {
+  position: absolute;
+  right: 0;
+  left: 22%;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.dot {
+  cursor: pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  transition: opacity 0.6s ease;
+  opacity: 0.5;
+}
+
+.active,
+.dot:hover {
+  opacity: 1;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.btn-carousel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  background: 0 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-prev {
+  left: 130px;
+}
+
+.btn-next {
+  right: 0;
+}
+
+.icon-carousel {
+  color: #fff;
+  opacity: 0.5;
+  transition: all 0.15s ease;
+}
+
+.icon-carousel:hover {
+  opacity: 0.9;
+}
+
+.icon-carousel:active {
+  opacity: 0.5;
+}
+
+.icon-prev,
+.icon-next {
+  font-size: 35px;
+}

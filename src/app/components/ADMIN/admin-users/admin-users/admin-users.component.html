@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="block">
+    <div style="align-items: center;">
+      <div class="sm-jumbotron" *ngIf="users">
+        <div>
+          <div *ngIf="users">
+            <h1 class="heading">All User Details</h1>
+            <div class="d-flex flex-row mb-2 blocks" >
+              <div>
+                <input type="search" class="form-control search" [(ngModel)]="input"
+                  placeholder="Search any field">
+              </div>
+              <div class="count">
+                <b class="length"> Total Users :</b> <b> {{users.length}}</b> <br>
+                <b>Choose number of records : &nbsp;</b>
+                <select class="choose" (change)="onTableSizeChange($event)">
+                  <option *ngFor="let size of tableSizes">
+                    {{size}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <table class="table table-hover" align="center">
+              <thead>
+                <tr style="background-color: rgba(179, 167, 167, 0.512);">
+                  <th scope="col">Sr N0 </th>
+                  <th scope="col" (click)="sort('name')">Name &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('userName')">UserName &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('id')">ID &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('mobileNo')">Mobile no &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('email')">Email &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('age')">Age &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('createdOn')">Created Date &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('isActive')"> Status &nbsp; &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col"> Action &nbsp; </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users 
+                                      | orderBy: orderHeader : isDescOrder 
+                                      | userSearchFilter :input  
+                                      | paginate :{
+                                                   itemsPerPage: tableSize,
+                                                   currentPage: page,
+                                                   totalItems: count
+                                                   }  
+                                      ; let i = index">
+                  <th scope="row">{{i+1}} </th>
+                  <td>{{user.name}}</td>
+                  <td>{{user.userName}}</td>
+                  <td class="left">{{user.id}}</td>
+                  <td>{{user.mobile}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.age}}</td> 
+                  <td>{{user.createdOn}}</td>
+                  <div *ngIf="user.isActive">
+                    <td>Active</td>
+                  </div>
+                  <div *ngIf="!user.isActive">
+                    <td class="center"><img src="https://cdn-icons-png.flaticon.com/512/2550/2550431.png"
+                        alt=""> </td>
+                  </div>
+                  <td class="center">  
+                    <a (click)="activateUser(user.id)" *ngIf="!(user.isActive)"> <img style="height: 30px;"
+                        src="https://cdn-icons-png.flaticon.com/512/3178/3178313.png" alt="Activate"> </a>
+                    <a (click)="deleteById(user.id)" *ngIf="!(user.userName== userName) && user.isActive"> <img
+                        src="https://cdn-icons-png.flaticon.com/128/6861/6861362.png" alt="Delete"> </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="(users | filterBy : searchInput).length === 0" class="notFound">
+              <p> No Match Found </p>
+            </div>
+            <!-- for Pagination -->
+            <div class="pagination">
+              <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
+

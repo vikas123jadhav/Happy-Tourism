@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand navbar-dark px-2 bg">
+  <div class="side-nav-button p-2 me-3 text-light">
+    <i *ngIf="!loggedIn" class="fa-solid fa-house" routerLink="home"></i>
+    <i *ngIf="loggedIn" class="fa-solid fa-bars" (click)="sideNavToggle()"></i>
+  </div>
+  <strong class="navbar-brand">Happy-Tourism</strong>
+  <div class="navbar-collapse">
+  </div>
+  <span class="example-spacer">
+    <a *ngIf="!loggedIn" mat-icon-button class="stup" routerLink="registerUser">Register</a>
+    <a *ngIf="!loggedIn" mat-icon-button class="stup" routerLink="login">Login</a>
+    <div *ngIf="loggedIn" class="profile-logo dropstart">
+      <button class="btn btn-outline-light cap"  data-bs-toggle="dropdown">
+        <i class="fa fa-user-circle name" aria-hidden="true"></i>
+        {{name}}
+      </button>
+    </div>
+  </span>
+</nav>
+

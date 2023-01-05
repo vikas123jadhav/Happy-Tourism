@@ -1,0 +1,103 @@
+<div class="container">
+    <div *ngIf="enableAddIcon">
+        <a (click)="enableLocationAdding()"> <img align="right" class="addImg" title="Add Location"
+                src="https://cdn-icons-png.flaticon.com/512/727/727570.png" alt="Add Location">
+        </a>
+    </div>
+    <div class="block">
+        <div *ngIf="locationList">
+            <h1>Available Locations</h1>
+            <div class="d-flex flex-row mb-2 block2">
+                <div>
+                    <input type="search" class="form-control" [(ngModel)]="searchInput.location"
+                        placeholder="Search by Location">
+                </div>
+                <div class="count">
+                    <b class="length">Available Locations :</b> <b>{{locations.length}}</b>
+                    <br>
+                    <b>Choose number of records : &nbsp;</b>
+                    <select (change)="onTableSizeChange($event)">
+                        <option *ngFor="let size of tableSizes">
+                            {{size}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <table class="table table-hover" align="center">
+                <caption>
+                </caption>
+                <thead style="background-color: rgba(179, 167, 167, 0.512);">
+                    <tr>
+                        <th scope="col">Sr N0 </th>
+                        <th scope="col" (click)="sort('location')">Location &nbsp;<i class="fa fa-sort"></i></th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let loc of locations 
+                          | orderBy: orderHeader : isDescOrder 
+                          | filterBy :searchInput  
+                          | paginate :{
+                                       itemsPerPage: tableSize,
+                                       currentPage: page,
+                                       totalItems: count
+                                       }  
+                          ; let i = index">
+                        <th scope="row">{{i+1}} </th>
+                        <td class="loc">{{loc.location}}</td>
+                        <td> <a (click)="deleteLocationById(loc.id)"> <img
+                                    src="https://cdn-icons-png.flaticon.com/128/6861/6861362.png" alt="Delete"> </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="(locations | filterBy : searchInput).length === 0" class="notFound">
+                <p> No Match Found </p>
+            </div>
+            <!-- for Pagination -->
+            <div style="float: right;">
+                <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                </pagination-controls>
+            </div>
+        </div>
+        <!-- =============================================================================================== -->
+        <div *ngIf="enableAddLocation">
+            <h1>Add Location</h1>
+            <form (ngSubmit)="addLocation()" [formGroup]="registerLocation">
+                <div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="firstname" class="form-label"> Enter Location </label>
+                            <input type="text" class="form-control" id="NAME" formControlName="LOCATION"
+                                (keyup)="VerifyUserOnKeyUP()" [(ngModel)]="location.location"><br>
+                            <span
+                                [ngClass]="{'text-success':isLocationValid,'text-danger':isLocationInValid}">{{userMsg}}</span>
+                            <div class="form-text text-danger"
+                                *ngIf="Location.errors?.['required'] && (Location.touched || Location.dirty)">
+                                Location is Required
+                            </div>
+                            <div class="form-text text-danger"
+                                *ngIf="Location.errors?.['noSpecialChar'] && (Location.touched || Location.dirty)">
+                                Location Characters Not allowed
+                            </div>
+                            <div class="form-text text-danger"
+                                *ngIf="Location.errors?.['pattern'] && (Location.touched || Location.dirty) && !Location.errors?.['noSpecialChar']">
+                                Location should start with Alphabet
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row center">
+                        <div class="center">
+                            <div>
+                                <button class="btn btn-primary" type="submit"
+                                    [disabled]="registerLocation.invalid">Submit</button> &nbsp;&nbsp;
+                                <button type="reset" class="btn btn reset">Reset</button> &nbsp;&nbsp;
+                                <button class="btn btn-warn cancel" (click)="cancelAdding()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

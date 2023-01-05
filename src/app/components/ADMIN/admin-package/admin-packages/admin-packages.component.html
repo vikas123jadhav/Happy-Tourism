@@ -1,0 +1,235 @@
+<div class="container">
+    <div *ngIf="enableAddIcon">
+        <a (click)="enablePackageAdding()"> <img class="imgAdd" align="right" imgFirst title="Add Package"
+                src="https://cdn-icons-png.flaticon.com/512/4443/4443009.png" alt="Add Package"> </a>
+    </div>
+    <div class="block">
+        <br>
+        <div *ngIf="enablePackageAdd" style="align-self: center;padding-left:200px;">
+            <h1 class="heading" *ngIf="add"><b> Add Package</b></h1> <br>
+            <h1 class="heading" *ngIf="update"><b> Update Package</b></h1> <br>
+            <form [formGroup]="registerform">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="form-label">Package Name</label>
+                        <input type="text" class="form-control" formControlName="PACKAGENAME"
+                            [(ngModel)]="package.packageName">
+                        <div class="form-text text-danger"
+                            *ngIf="PackageName.errors?.['required'] && (PackageName.touched || PackageName.dirty)">
+                            Package Name is Required
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="PackageName.errors?.['noSpecialChar'] && (PackageName.touched || PackageName.dirty)">
+                            Special Characters Not allowed , allows Space only
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="PackageName.errors?.['minlength'] && (PackageName.touched || PackageName.dirty)">
+                            Package Name should be between 5
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="PackageName.errors?.['pattern'] && (PackageName.touched || PackageName.dirty)">
+                            Package Name should start with Alphabet
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <label class="form-label">Location</label>
+                        <select class="form-control" formControlName="LOCATION" [(ngModel)]="package.location">
+                            <option value="" disabled selected>Choose Location</option>
+                            <option *ngFor="let loc of locations">
+                                {{loc.location}}
+                            </option>
+                        </select>
+                        <div class="form-text text-danger" *ngIf="Location.errors?.['required'] &&  Location.touched  ">
+                            Location required
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="form-label">Start Date</label>
+                        <input type="date" class="form-control" formControlName="STARTDATE"
+                            [(ngModel)]="package.startDate">
+                        <div class="form-text text-danger"
+                            *ngIf="StartDate.errors?.['required'] &&  StartDate.touched  ">
+                            Start Date required
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <label class="form-label">End Date</label>
+                        <input type="date" class="form-control" formControlName="ENDDATE" [(ngModel)]="package.endDate">
+                        <div class="form-text text-danger" *ngIf="EndDate.errors?.['required'] &&  EndDate.touched  ">
+                            End Date required
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="form-label">Slots</label>
+                        <input type="number" class="form-control" formControlName="SLOTS" [(ngModel)]="package.slots">
+                        <div class="form-text text-danger"
+                            *ngIf="Slots.errors?.['required'] && ( Slots.touched || Slots.dirty)">
+                            Slots Required
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="Slots.errors?.['pattern'] && ( Slots.touched || Slots.dirty)">
+                            Must have only digits
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <label class="form-label">Peoples Count</label>
+                        <input type="number" class="form-control" formControlName="PEOPLECOUNTS"
+                            [(ngModel)]="package.noOfPeoples">
+                        <div class="form-text text-danger"
+                            *ngIf="NoOfPeoples.errors?.['required'] && ( NoOfPeoples.touched || NoOfPeoples.dirty)">
+                            Count Required
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="NoOfPeoples.errors?.['pattern'] && ( NoOfPeoples.touched || NoOfPeoples.dirty)">
+                            Must have only digits
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="form-label">Cost</label>
+                        <input type="number" class="form-control" formControlName="COST" [(ngModel)]="package.cost">
+                        <div class="form-text text-danger"
+                            *ngIf="Cost.errors?.['required'] && ( Cost.touched || Cost.dirty)">
+                            Cost Required
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="Cost.errors?.['pattern'] && ( Cost.touched || Cost.dirty)">
+                            Must have only digits
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <label class="form-label">Select Image</label>
+                        <input type="file" name="file_path" class="form-control" formControlName="IMGPATH"
+                            accept="image/*" (change)="onUploadFile($event)">
+                        <div class="form-text text-danger"
+                            *ngIf="ImgPath.errors?.['required'] && ( ImgPath.touched || ImgPath.dirty)">
+                            Image Required
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" required name="Question" id="Question"
+                            formControlName="DESCRIPTION" [(ngModel)]="package.description">
+                   </textarea>
+                        <div class="form-text text-danger"
+                            *ngIf="Description.errors?.['required'] && (Description.touched || Description.dirty)">
+                            Description is Required
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="Description.errors?.['minlength'] && (Description.touched || Description.dirty)">
+                            Description should be between 2-150 Chars only
+                        </div>
+                        <div class="form-text text-danger"
+                            *ngIf="Description.errors?.['maxlength'] && (Description.touched || Description.dirty)">
+                            Description should be between 2-150 Chars only
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="text-align: center;">
+                    <div class="">
+                        <div>
+                            <button class="btn btn-primary" type="submit" (click)="packageSubmit()" *ngIf="add"
+                                [disabled]="registerform.invalid">Submit</button> &nbsp;&nbsp;
+                            <button class="btn btn-primary" type="submit" (click)="packageUpdate()" *ngIf="update"
+                                [disabled]="registerform.invalid">Update</button> &nbsp;&nbsp;
+                            <button type="reset" class="btn btn reset">Reset</button> &nbsp;&nbsp;
+                            <button class="btn btn-warn cancel" (click)="cancelAdding()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br><br><br>
+        </div>
+        <!-- ====================================================================================== -->
+        <div *ngIf="enablePackageList" class="pckList">
+            <h1 class="listLabel">List of Available Packages </h1>
+            <div class="search">
+                <input type="search" class="form-control" [(ngModel)]="input" placeholder="Search any field">
+            </div>
+            <!-- <div class="packClass"> -->
+            <div class="row">
+                <ng-container *ngFor="let item of packages   | packageSearchFilter :input  ">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header" style="height: 40px;">
+                                <p class="card-title">{{item.packageName}}</p>
+                            </div>
+                            <div class="card-body" align="center">
+                                <img class="imgPath" [src]="item.imgPath"><br><br>
+                                <div class="middle">
+                                    <div class="text">{{item.description}}</div>
+                                </div>
+                                <p class="card-subtitle" align="left">
+                                    <strong>Location: </strong> {{item.location}} <br>
+                                    <strong>Date: </strong> {{item.startDate}} to {{item.endDate}} <br>
+                                    <strong>Available: </strong> {{item.slots}}-slots <br>
+                                    <strong>Count: </strong> {{item.noOfPeoples}}-peoples <br>
+                                    <strong>Price: </strong> {{item.cost | currency:'INR'}}
+                                </p>
+                            </div>
+                            <div class="card-footer" align="right"
+                                *ngIf="item.isActive && item.slots!=0 && item.isAvailable">
+                                <img class="imgIcon" (click)="editPackageById(item.id)" title="Edit"
+                                    src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Edit"
+                                    height="10px"> &nbsp;
+                                <img class="imgIcon" (click)="deleteById(item.id)" title="Delete"
+                                    src="https://cdn-icons-png.flaticon.com/128/6861/6861362.png" alt="Delete"
+                                    height="20px">
+                            </div>
+
+                            <div class="card-footer un" align="center"
+                                *ngIf="!item.isActive || item.slots==0 || !item.isAvailable">
+
+                                <b class="red" *ngIf="!item.isActive && item.slots==0 && !item.isAvailable">UnAvailable,
+                                    No Slots,
+                                    Expired</b>
+                                <b class="red" *ngIf="!item.isActive && item.slots==0">No Slots, UnAvailable</b>
+                                <b class="red" *ngIf=" item.slots==0 && !item.isAvailable">No Slots, Expired</b>
+                                <b class="red" *ngIf="!item.isActive && !item.isAvailable">UnAvailable,
+                                    Expired</b>
+                                <b class="red" *ngIf="!item.isActive && item.slots!=0 && item.isAvailable">Not
+                                    Available</b>
+                                <b class="red" *ngIf="item.isActive && item.slots==0 && item.isAvailable">No
+                                    Slots</b>
+                                <b class="red" *ngIf="item.isActive && item.slots!=0 && !item.isAvailable">Expired
+                                    Package</b>
+
+                                <img class="imgIcon editIcon" (click)="editPackageById(item.id)" title="Edit"
+                                    src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Edit"
+                                    height="10px">
+                                <img class="imgIcon" align="right" *ngIf="item.slots>0 || item.isActive"
+                                    (click)="deleteById(item.id)" title="Delete"
+                                    src="https://cdn-icons-png.flaticon.com/128/6861/6861362.png" alt="Delete"
+                                    height="20px">
+                                <img *ngIf="!item.isActive" (click)="activatePackage(item.id)" class="imgIcon activate"
+                                    align="right" src="https://cdn-icons-png.flaticon.com/512/3178/3178313.png"
+                                    alt="Activate" title="activate">
+                            </div>
+
+                            <!-- <div class="card-footer un" align="center" *ngIf="!item.isAvailable">
+                                    <b class="red">Out Dated</b>
+                                    <img class="imgIcon" (click)="editPackageById(item.id)" title="Edit"
+                                        src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Edit"
+                                        height="10px"> &nbsp;
+                                    <img class="imgIcon" (click)="deleteById(item.id)" title="Delete"
+                                        src="https://cdn-icons-png.flaticon.com/128/6861/6861362.png" alt="Delete"
+                                        height="20px">
+                                </div> -->
+                        </div>
+                    </div>
+                </ng-container>
+                <div class="notFound" *ngIf="(packages | filterBy : searchInput).length === 0">
+                    <p> No Match Found </p>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>

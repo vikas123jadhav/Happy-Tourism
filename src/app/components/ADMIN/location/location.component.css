@@ -1,0 +1,103 @@
+.container {
+  padding-top: 65px;
+  padding-left: 93.5px;
+}
+
+.block {
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+table {
+  width: 1200px;
+  font-size: 13px;
+}
+
+img {
+  height: 20px;
+}
+
+.reset {
+  background-color: orangered;
+  color: white;
+}
+
+.cancel {
+  background-color: red;
+  color: white;
+}
+
+th {
+  text-align: center;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 15px;
+}
+
+td {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 8px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.tdCls {
+  text-align: center;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 8px;
+  text-transform: capitalize;
+}
+
+.row {
+  width: 700px;
+}
+
+.addImg {
+  height: 80px;
+  padding-top: 30px;
+  margin-left: 40px;
+}
+
+h1 {
+  color: blue;
+  font-weight: bold;
+}
+
+.block2 {
+  width: 1200px;
+}
+
+.search {
+  width: 250px
+}
+
+.count {
+  margin-left: 695px;
+}
+
+.length {
+  padding-right: 95px;
+}
+
+.choose {
+  width: 55px
+}
+
+form {
+  padding-left: 200px;
+}
+
+.loc {
+  padding-left: 400px;
+  text-align: left
+}
+
+.notFound {
+  text-align: center;
+  padding-top: 50px;
+  color: red;
+  text-align: center;
+  font-size: 16px;
+}

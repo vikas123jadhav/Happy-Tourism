@@ -1,0 +1,52 @@
+.full-width {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  padding-top: 70px;
+}
+
+img {
+  height: 150px;
+}
+
+h1 {
+  padding-top: 10px;
+}
+
+input {
+  color: black;
+  height: 25px;
+}
+
+.row {
+  margin-top: 20px;
+}
+
+.reset {
+  background-color: orangered;
+  color: white;
+  margin-left: 10px
+}
+
+.result {
+  color: red;
+  text-align: center;
+}
+
+.logged {
+  text-align: center;
+  padding-top: 200px;
+}
+
+.loggedImg {
+  border-radius: 50%;
+  text-align: center;
+  height: 200px;
+}

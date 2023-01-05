@@ -1,0 +1,29 @@
+<div class="container">
+    <div>
+        <div class="row">
+            <div class="col-sm-1 col-md-4 col-lg-7">
+                <h2>Charts</h2>
+                <canvas id="bar"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="graph">
+        <table class="table table-hover">
+            <thead style="background-color: rgba(179, 167, 167, 0.801);">
+                <tr>
+                    <th scope="col">Sr N0 </th>
+                    <th scope="col">Location</th>
+                    <th scope="col" class="center">Total Bookings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let loc of locataionList; let i = index">
+
+                    <th scope="row" class="pl">{{i+1}} </th>
+                    <td scope="row">{{loc.location}}</td>
+                    <td scope="row" class="center"> {{loc.count}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+</div>

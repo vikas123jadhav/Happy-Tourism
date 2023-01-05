@@ -1,0 +1,160 @@
+.container {
+    padding-top: 65px;
+    padding-left: 93.5px;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text {
+    background-color: rgba(128, 128, 128, 0.667);
+    color: rgb(235, 226, 226);
+    font-size: 16px;
+    padding: 16px 32px;
+}
+
+.card-body:hover .imgPath {
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+
+.card-body:hover .middle {
+    opacity: 1;
+}
+
+.packClass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgFirst {
+    height: 100px;
+    width: 200px;
+}
+
+.imgAdd:hover {
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+
+.imgAdd {
+    height: 90px;
+    padding-top: 30px;
+}
+
+textarea {
+    height: 100px;
+}
+
+.reset {
+    background-color: orangered;
+    color: white;
+}
+
+.cancel {
+    background-color: red;
+    color: white;
+}
+
+.pckList {
+    width: 1200px;
+    margin-left: 50px;
+}
+
+.listLabel {
+    color: blue;
+    font-weight: bolder;
+}
+
+.search {
+    padding-bottom: 10px;
+    text-align: right;
+    width: 270px;
+    margin-bottom: 20px;
+}
+
+.heading {
+    padding-left: 350px;
+    color: blue
+}
+
+.imgPath {
+    height: 150px;
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    transition: 0.3s ease-in-out;
+    width: 230px;
+}
+
+.search-icon {
+    position: absolute;
+    z-index: 22;
+    right: 66%;
+    color: blue;
+    margin-top: -23px;
+}
+
+.imgIcon {
+    height: 20px;
+}
+
+.block {
+    margin: 30px;
+    margin-bottom: 100px;
+}
+
+form {
+    width: 800px;
+}
+
+.row {
+    padding-bottom: 10px;
+}
+
+.col {
+    padding-right: 30px;
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    ;
+    margin-bottom: 30px;
+}
+
+.card-body {
+    height: 290px;
+}
+
+.un {
+    border-color: red;
+}
+
+.editIcon {
+    padding-left: 80px;
+}
+
+.activate {
+    height: 22px;
+}
+
+.notFound {
+    text-align: center;
+    padding-top: 50px;
+    color: red;
+    text-align: center;
+    font-size: 16px;
+}
+
+.red{
+    color: red;
+}

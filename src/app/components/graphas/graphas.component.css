@@ -1,0 +1,34 @@
+.container-fluid {
+    padding-top: 3rem;
+    padding-left: 3.3rem;
+}
+
+.container {
+    padding-left: 98px;
+    padding-top: 4rem;
+}
+
+.row {
+    margin-left: 50px;
+}
+
+table {
+    margin-left: 50px;
+    width: 900px;
+    margin-bottom: 50px;
+}
+
+.graph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 60px;
+}
+
+.pl {
+    padding-left: 20px;
+}
+
+.center {
+    text-align: center;
+}

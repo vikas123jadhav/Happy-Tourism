@@ -1,0 +1,112 @@
+.container {
+    padding-top: 65px;
+    padding-left: 93.5px;
+}
+
+.card {
+    height: 70vh;
+    margin-left: 100px;
+    margin-top: 30px;
+    padding: 25px;
+}
+
+.center {
+    position: absolute;
+    top: 55%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.center img {
+    text-decoration: none;
+    color: inherit;
+    border: none;
+    outline: none;
+    height: 162px;
+    width: 250px;
+    margin: 20px 0px;
+}
+
+.card-table {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: none;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 2);
+    border-radius: .25rem;
+    margin-bottom: 50px;
+
+    margin-left: 40px;
+    margin-top: 20px;
+    width: 1250px;
+    margin-bottom: 20px;
+}
+
+.note{
+    margin-left: 40px;
+    margin-top: -10px;
+}
+.center .btn {
+    font-size: 14px !important;
+    margin-top: 20px !important;
+    font-weight: 400;
+    padding: 12px 72px;
+    border-radius: 3px !important;
+}
+
+.imgPath {
+    width: 180px;
+    height: 150px;
+}
+
+.blue {
+    color: blue;
+}
+
+.red {
+    color: red;
+}
+
+.dec {
+    height: 25px;
+    padding-left: 4px;
+}
+
+.inc {
+    height: 25px;
+}
+
+.totalBill {
+    padding-top: 40px;
+}
+
+.ntavl {
+    padding-top: 60px;
+}
+
+.delImg {
+    height: 30px;
+    padding-right: 20px;
+}
+
+.book {
+    height: 40px;
+}
+
+.notAval {
+    height: 30px;
+}
+
+.cartDiv {
+    float: right;
+    margin-bottom: 10px;
+}
+
+.carEmpty {
+    font-weight: 0;
+    font-size: 15px;
+}

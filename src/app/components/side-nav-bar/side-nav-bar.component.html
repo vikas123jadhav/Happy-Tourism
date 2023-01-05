@@ -1,0 +1,87 @@
+<div class="content" *ngIf="loggedIn">
+    <div class="side-nav-content" *ngIf="loggedIn">
+        <ul class="nav-list" [ngClass]="{'nav-list-open': sideNavStatus}">
+            <li *ngIf="loggedIn" class="nav-list-item">
+                <i class="fa-solid fa-box"></i>
+                <span *ngIf="sideNavStatus">
+                    <a *ngIf="role=='ADMIN'" href="graphs">DashBoard</a>
+                    <a *ngIf="role=='NORMAL'" href="graphs">DashBoard</a>
+                </span>
+            </li>
+            <!-- ====================================Admin ==========================      -->
+            <!-- <div *ngIf="role=='ADMIN'"> -->
+            <li class="nav-list-item" *ngIf="role=='ADMIN'">
+                <i class="fa-solid fa-table"></i>
+                <span *ngIf="sideNavStatus">
+                    <a routerLink='adminPackages'>Packages</a>
+                </span>
+            </li>
+            <li class="nav-list-item" *ngIf="role=='ADMIN'">
+                <i class="fa-solid fa-book"></i>
+                <span *ngIf="sideNavStatus">
+                    <a routerLink='adminBookings'>Bookings</a>
+                </span>
+            </li>
+            <li class="nav-list-item" *ngIf="role=='ADMIN'">
+                <i class="fa-solid fa-map-marker"></i>
+                <span *ngIf="sideNavStatus">
+                    <a routerLink='location'>Locations</a>
+                </span>
+            </li>
+            <li class="nav-list-item" *ngIf="role=='ADMIN'">
+                <i class="fa-solid fa-users"></i>
+                <span *ngIf="sideNavStatus">
+                    <a routerLink='adminUsers'>Users</a>
+                </span>
+            </li>
+            <!-- </div> -->
+            <!-- ====================================User ==========================      -->
+            <!-- <div *ngIf="role=='NORMAL'"> -->
+            <li class="nav-list-item" *ngIf="role=='NORMAL'">
+                <i class="fa-solid fa-table"></i>
+                <span *ngIf="sideNavStatus">
+                    <a routerLink='normalPackages'>Packages</a>
+                </span>
+            </li>
+            <li class="nav-list-item" *ngIf="role=='NORMAL'">
+                <i class="fa-solid fa-book"></i>
+                <span *ngIf="sideNavStatus">
+                    <a routerLink='normalBookings'>Bookings</a>
+                </span>
+            </li>
+            <li class="nav-list-item" *ngIf="role=='NORMAL'">
+                <i class="fas fa-shopping-cart">
+                    <div style="font-size: 10px;margin-left: -5px;" class="badge bg-danger">{{totalItem}}</div>
+                </i>
+                <span *ngIf="role=='NORMAL'">
+                    <a routerLink='cart'>Cart</a>
+                </span>
+            </li>
+            <li class="nav-list-item" *ngIf="role=='NORMAL'">
+                <i class="fa-solid fa-table"></i>
+                <span *ngIf="sideNavStatus">
+                    <a routerLink="normalReceipt"> Receipts</a>
+                </span>
+            </li>
+            <!-- </div> -->
+            <li class="nav-list-item">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <span *ngIf="sideNavStatus">
+                    <a routerLink='profile'>Profile</a>
+                </span>
+            </li>
+            <li class="nav-list-item">
+                <i class="fa-solid fa-circle-info"></i>
+                <span *ngIf="sideNavStatus">
+                    <a routerLink='about'>About</a>
+                </span>
+            </li>
+            <li class="nav-list-item">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                <span *ngIf="sideNavStatus">
+                    <a (click)="logoutUser()">Logout</a>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>

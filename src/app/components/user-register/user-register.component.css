@@ -1,0 +1,27 @@
+.full-width {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+img {
+    height: 100px;
+}
+
+h1 {
+    padding-top: 10px;
+}
+
+.container {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.form-control {
+    border-color: rgb(121, 108, 108);
+}
+
+.reset {
+    background-color: orangered;
+    color: white;
+}

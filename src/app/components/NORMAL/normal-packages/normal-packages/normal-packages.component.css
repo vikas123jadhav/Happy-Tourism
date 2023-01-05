@@ -1,0 +1,214 @@
+.container {
+  padding-top: 65px;
+  padding-left: 93.5px;
+}
+
+.container1 {
+  padding-top: 65px;
+  padding-left: 50px;
+  margin-bottom: 100px;
+}
+
+.packClass {
+  margin-top: -120px;
+  margin-left: 30px;
+}
+
+.card-header {
+  height: 40px;
+}
+
+.d-flex {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text {
+  background-color: rgba(128, 128, 128, 0.667);
+  color: rgb(235, 226, 226);
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+.card-body:hover .imgPath {
+  transition: 0.3s ease-in-out;
+  transform: scale(1.1);
+  opacity: 0.6;
+}
+
+.card-body:hover .middle {
+  opacity: 1;
+}
+
+.card {
+  margin: 40px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin-right: 55px
+}
+
+.cc {
+  width: 400px;
+  margin-left: -50px;
+  height: 550px;
+  width: 450px;
+  border-color: white;
+}
+
+.cc2 {
+  box-shadow: white 0px 54px 55px, white 0px -12px 30px, white 0px 4px 6px, white 0px 12px 13px, white 0px -3px 5px;
+  margin-top: 150px;
+  align-items: center;
+}
+
+.detail {
+  margin-left: -100px;
+}
+
+.row {
+  height: 300px;
+  margin-bottom: 100px;
+  margin-left: 20px;
+}
+
+.card img {
+  padding-left: 7px;
+  width: 230px;
+  height: 200px;
+  margin-bottom: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+.card img:hover {
+  transition: 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.imgPath {
+  width: 150px;
+  height: 150px;
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+ng-container {
+  margin-left: 50px;
+}
+
+tr {
+  margin-top: 2px;
+}
+
+.data {
+  text-align: left;
+  padding-left: 30px;
+}
+
+.solid {
+  border-style: solid;
+  color: blue;
+  padding-top: 20px;
+}
+
+.searchDiv {
+  padding-bottom: 10px;
+  text-align: right;
+  margin-left: 80px;
+}
+
+.search {
+  width: 288px;
+  margin-left: -20px;
+}
+
+.card-title2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100ch;
+}
+
+.card-body {
+  height: 350px;
+}
+
+.imgCB {
+  width: 230px;
+}
+
+.card-footer {
+  height: 50px;
+}
+
+.par {
+  margin-left: 45px;
+  margin-top: -2px;
+}
+
+.bookImg {
+  height: 40px;
+  width: 50px
+}
+
+.addCartImg {
+  height: 40px;
+  width: 50px
+}
+
+.notFDiv {
+  text-align: center;
+  padding-top: 50px
+}
+
+.notFound {
+  color: red;
+  text-align: center;
+  font-size: 16px;
+}
+
+.popDiv {
+  width: 1200px;
+  margin-top: -40px;
+}
+
+.h1Pop {
+  color: blue;
+  margin-left: 15px;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.red {
+  color: red;
+}
+
+.white {
+  color: white;
+}
+
+.dec {
+  height: 25px;
+  width: 25px;
+}
+
+.inc {
+  height: 25px;
+  width: 25px;
+}

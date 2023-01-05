@@ -1,0 +1,177 @@
+<div class="container">
+    <ng-container *ngIf="searchOpt">
+        <div class="toCenter">
+            <form class="center">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="Enter Your valid PaymentId"
+                            name="paymentId" id="paymentId" required [(ngModel)]="paymentId">
+                    </div>
+                    <div class="col-sm-1">
+                        <button class="btn btn-primary" (click)="getReceipt()">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="showReceipt && !searchOpt">
+        <div class="st1">
+            <div>
+                <img (click)="makepdf()" class="down"
+                    src="https://as2.ftcdn.net/v2/jpg/01/03/75/43/1000_F_103754394_xSNhdDOKFusz9Vrb8ZZNLY8SXSwLfaIT.jpg"
+                    alt="Download" title="Download">
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="showReceipt && searchOpt">
+        <div class="st2">
+            <div>
+                <img (click)="makepdf()"  class="down2"
+                    src="https://as2.ftcdn.net/v2/jpg/01/03/75/43/1000_F_103754394_xSNhdDOKFusz9Vrb8ZZNLY8SXSwLfaIT.jpg"
+                    alt="Download" title="Download">
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="showReceipt">
+        <div style="padding-top: 40px; " id="htmlData">
+            <div class="bootdey">
+                <div class="row">
+                    <div class="col-10 col-sm-offset-1">
+                        <div class="widget-box">
+                            <div class="widget-header widget-header-large">
+                                <h1>
+                                    <i class="ace-icon fa fa-leaf purple"></i>
+                                    <b> Happy-Tourism Receipt </b>
+                                </h1>
+                                <div class="widget-toolbar no-border invoice-info" style="float: right;">
+                                    <span class="invoice-info-label black">Invoice: </span>
+                                    <span class="blue">#121212</span>
+                                    <br>
+                                    <span class="invoice-info-label black">Date: </span>
+                                    <span class="blue"> {{currentDate}}</span>
+                                </div>
+                            </div>
+                            <div class="widget-body">
+                                <div class="widget-main padding-24">
+                                    <div class="row">
+                                        <div class="col-sm-6" style="padding-left: 5px;">
+                                            <div class="row">
+                                                <div class="col-xs-10 label label-lg label-info arrowed-in arrowed-right"
+                                                    style="background-color: rgb(71, 71, 238); margin-right: 5px; text-align:center">
+                                                    <b class="green">Company Info</b>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <ul class="list-unstyled spaced">
+                                                    <li>
+                                                        <i class="ace-icon fa fa-caret-right blue"
+                                                             ></i> Roxana Towars , Begumpet
+                                                    </li>
+                                                    <li>
+                                                        <i class="ace-icon fa fa-caret-right blue"
+                                                        ></i> Pin-code: 500016
+                                                    </li>
+                                                    <li>
+                                                        <i class="ace-icon fa fa-caret-right blue"
+                                                         ></i> Telangana, India
+                                                    </li>
+                                                    <li>
+                                                        <i class="ace-icon fa fa-caret-right blue"
+                                                    ></i>
+                                                        Phone:
+                                                        <b>256-211-333</b>
+                                                    </li>
+                                                    <li class="divider"></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-xs-11 label label-lg label-success arrowed-in arrowed-right"
+                                                    style="background-color: rgb(106, 235, 106); text-align:center ">
+                                                    <b style="color: rgb(71, 71, 238)">Customer Info</b>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <ul class="list-unstyled  spaced">
+                                                    <li>
+                                                        <i class="ace-icon fa fa-caret-right green"
+                                                         ></i>&nbsp; Name:
+                                                        {{user.name}}
+                                                    </li>
+                                                    <li>
+                                                        <i class="ace-icon fa fa-caret-right green"
+                                                        ></i>&nbsp; Age:
+                                                        {{user.age}}
+                                                    </li>
+                                                    <li>
+                                                        <i class="ace-icon fa fa-caret-right green"
+                                                         ></i>&nbsp;Email:
+                                                        {{user.email}}
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li>
+                                                        <i class="ace-icon fa fa-caret-right green"
+                                                         ></i>
+                                                        &nbsp;Mobile: {{user.mobile}}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="space"></div>
+                                    <div style="margin-top: 50px;">
+                                        <table class="table table-hover">
+                                            <thead  >
+                                                <tr>
+                                                    <th class="center">#</th>
+                                                    <th>Package Name</th>
+                                                    <th>Location</th>
+                                                    <th class="hidden-xs">Booked Date</th>
+                                                    <th class="hidden-480">Started Date</th>
+                                                    <th class="hidden-480">Booked Slots</th>
+                                                    <th>Cost</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let booking of bookings;let i = index">
+                                                    <td class="center">{{i+1}}</td>
+                                                    <td> {{booking.packageName}} </td>
+                                                    <td> {{booking.location}} </td>
+                                                    <td class="hidden-xs"> {{booking.bookedDate}} </td>
+                                                    <td class="hidden-480"> {{booking.startDate}} </td>
+                                                    <td class="text-center"> {{booking.noOfSlots}} </td>
+                                                    <td>{{booking.cost}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="hr hr8"></div>
+                                    <div style="float: left;">
+                                        <i class="ace-icon fa fa-caret-right blue"></i>
+                                        Paymant Info - Online
+                                    </div>
+                                    <div style="float: right;">
+                                        <strong> Total amount : {{totalBill | currency:'INR' }} </strong>
+                                    </div>
+                                    <br><br>
+                                    <div style="margin-top: 20px;">
+                                        <b>Thank you..!</b> <br>
+                                        For choosing Happy Tourism Journey. We believe you will be satisfied by our
+                                        services.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="NotFound!=''">
+        <strong color="red">
+            <h2 class="text-center notFound">{{NotFound}} </h2>
+        </strong>
+    </ng-container>
+</div>

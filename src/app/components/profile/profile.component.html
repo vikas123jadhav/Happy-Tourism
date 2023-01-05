@@ -1,0 +1,31 @@
+<div class="container text-center" onload="getDetails()">
+  <img src="https://cdn-icons-png.flaticon.com/256/4825/4825087.png" alt="" class="profile-image">
+  <br><br>
+  <h1> <b>Your Profile </b></h1>
+  <br><br>
+  <table class="table table-hover" align="center">
+    <tbody>
+      <tr>
+        <th scope="row">Name</th>
+        <td class="cap">{{user.name}}</td>
+      </tr>
+      <tr>
+        <th scope="row">User-Name</th>
+        <td>{{user.userName}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Age</th>
+        <td>{{user.age}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Contact No</th>
+        <td class="cap">{{user.mobile}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Email</th>
+        <td>{{user.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button mat-raised-button color="primary" [routerLink]="'updateProfile'"> Edit Profile </button>
+</div>

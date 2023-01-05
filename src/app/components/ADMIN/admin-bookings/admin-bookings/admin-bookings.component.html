@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="block">
+    <div style="align-items: center;">
+      <div class="sm-jumbotron" *ngIf="bookings">
+        <div>
+          <div *ngIf="bookings">
+            <h1 style="color:blue; font-weight: bold;">All Booking Details</h1>
+            <div class="d-flex flex-row mb-2 searchWidth">
+              <div>
+                <input type="search" class="form-control" [(ngModel)]="input"
+                  placeholder="Search any field" style="width:250px">
+              </div>
+              <div class="count">
+                <b class="count2"> Total Bookings -</b><b> {{bookings.length}}</b><br>
+                <b>Choose number of records : &nbsp;</b>
+                <select (change)="onTableSizeChange($event)" style="width:55px">
+                  <option *ngFor="let size of tableSizes">
+                    {{size}}
+                  </option>
+                </select>
+
+              </div>
+            </div>
+            <table class="table table-hover" align="center">
+              <thead style="background-color: rgba(179, 167, 167, 0.512);">
+                <tr>
+                  <th scope="col">Sr N0 </th>
+                  <th scope="col" (click)="sort('packageName')">Package Name &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('bookedById')">User Id &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('noOfSlots')">Booked Slots &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('id')">Booking Id &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('bookedDate')">Booked Date &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('updatedDate')">Updated Date &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('paymentId')">Payment Id &nbsp;<i class="fa fa-sort"></i></th>
+                  <th scope="col" (click)="sort('totalBill')">Total Bill &nbsp;<i class="fa fa-sort"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let booking of bookings 
+                                      | orderBy: orderHeader : isDescOrder 
+                                      | bookingSearchFilter :input  
+                                      | paginate :{
+                                                   itemsPerPage: tableSize,
+                                                   currentPage: page,
+                                                   totalItems: count
+                                                   }  
+                                      ; let i = index">
+                  <th scope="row">{{i+1}} </th>
+                  <th scope="row" class="left">{{booking.packageName}} </th>
+                  <td>{{booking.bookedById}}</td>
+                  <td>{{booking.noOfSlots}}</td>
+                  <td class="center">{{booking.id}}</td>
+                  <td>{{booking.bookedDate}}</td>
+                  <td *ngIf="booking.updatedDate==null">-</td>
+                  <td *ngIf="booking.updatedDate">{{booking.updatedDate}}</td>
+                  <td>{{booking.paymentId}}</td>
+                  <td>{{booking.totalBill}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="(bookings | filterBy : searchInput).length === 0" class="notFound">
+              <p class="color"> No Match Found </p>
+            </div>
+            <!-- for Pagination -->
+            <div style="float: right;">
+              <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

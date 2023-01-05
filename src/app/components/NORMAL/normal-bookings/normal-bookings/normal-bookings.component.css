@@ -1,0 +1,85 @@
+.container {
+  padding-top: 65px;
+  padding-left: 93.5px;
+}
+
+img {
+  height: 50px;
+  padding-left: 50px;
+}
+
+.block {
+  margin: 50px;
+  margin-bottom: 100px;
+}
+
+h1 {
+  color: blue;
+  font-weight: bold;
+}
+
+.block2 {
+  width: 1200px
+}
+
+.search {
+  width: 250px
+}
+
+.count {
+  margin-left: 695px;
+}
+
+.length {
+  padding-right: 125px;
+}
+
+.choose {
+  width: 55px;
+}
+
+table {
+  width: 1200px;
+  font-size: 13px;
+}
+
+thead{
+  background-color: rgba(179, 167, 167, 0.512);
+}
+
+th {
+  text-align: center;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 15px;
+}
+
+td {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 8px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.tdCls {
+  text-align: center;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 8px;
+  text-transform: capitalize;
+}
+
+
+.left{
+  text-align: left;
+}
+.center{
+  text-align: center
+}
+.notFound{
+  text-align: center; padding-top:50px;color: red;text-align: center; font-size: 16px;
+}
+.pagination{
+  float:right;
+}

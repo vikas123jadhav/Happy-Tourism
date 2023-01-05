@@ -1,0 +1,88 @@
+.container {
+  padding-top: 65px;
+  padding-left: 93.5px;
+}
+
+.block {
+  margin: 50px;
+}
+
+table {
+  width: 1200px;
+  font-size: 13px;
+}
+
+img {
+  height: 20px;
+}
+
+th {
+  text-align: left;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 15px;
+}
+
+td {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 8px;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.tdCls {
+  text-align: left;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 8px;
+  text-transform: capitalize;
+}
+
+
+.heading {
+  color: blue;
+  font-weight: bold;
+}
+
+.blocks {
+  width: 1200px
+}
+
+.count {
+  margin-left: 695px;
+}
+
+.length {
+  padding-right: 155px;
+}
+
+.search {
+  width: 250px
+}
+
+.choose {
+  width: 55px
+}
+
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.notFound {
+  text-align: center;
+  padding-top: 50px;
+  color: red;
+  text-align: center;
+  font-size: 16px;
+}
+
+.pagination {
+  float: right;
+  padding-left: 50px;
+}

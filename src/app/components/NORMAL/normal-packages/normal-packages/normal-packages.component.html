@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="container1">
+    <ng-container *ngIf="showPackage">
+      <div class="searchDiv">
+        <input type="search" class="form-control search" [(ngModel)]="input"
+          placeholder="Search any field"  >
+      </div>
+      <div class="row">
+        <ng-container *ngFor="let item of activePackages | packageSearchFilter :input" style="margin-bottom: 100px">
+          <div class="card col-md-3"  *ngIf="item.slots!=0">
+            <div class="card-header">
+              <p class="card-title2" >
+                {{item.packageName}}
+              </p>
+            </div>
+            <div class="card-body" >
+              <img [src]="item.imgPath" class="imgCB" alt="">
+              <div class="middle">
+                <div class="text">{{item.description}}</div>
+              </div>
+              <p class="card-subtitle" align="left"></p>
+              <strong>Location: </strong> {{item.location}} <br>
+              <strong>Date: </strong> {{item.startDate}} to {{item.endDate}} <br>
+              <strong>Available: </strong> {{item.slots}}-slots <br>
+              <strong>Count: </strong> {{item.noOfPeoples}}-peoples <br>
+              <strong>Price: </strong> {{item.cost | currency:'INR'}}
+            </div>
+            <div class="card-footer" >
+              <p class="par">
+                <img class="bookImg" src="https://cdn-icons-png.flaticon.com/512/613/613598.png"
+                  (click)="bookPopPupPackageById(item.id)" alt="Buy" title="Buy" style="height: 40px;width:50px">
+                &nbsp;&nbsp;
+                <img src="https://cdn-icons-png.flaticon.com/512/3523/3523887.png" (click)="addToCart(item.id,item.slots)"
+                  alt="+Cart" title="Add to Cart" style="height: 40px;width:50px">
+              </p>
+            </div>
+          </div>
+        </ng-container>
+        <div class="notFDiv" *ngIf="(activePackages | filterBy : searchInput).length === 0" >
+          <p class="notFound"> No Match Found </p>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Modal -->
+    <ng-container *ngIf="popup">
+      <div class="popDiv" >
+        <h1 class="h1Pop"><b>Buy Package</b></h1>
+        <br><br>
+        <br><br>
+        <div class="packClass">
+          <div class="row">
+            <ng-container>
+              <div class="col-sm-6">
+                <div class="d-flex flex-row">
+                  <div class="content">
+                    <div class="card cc">
+                      <br>
+                      <div class="card-header" style="height: 40px;border-color: white;">
+                        <p class="card-title"><b>{{package.packageName}}</b></p>
+                      </div>
+                      <div class="card-body" align="center" style="height: 290px;">
+                        <img class="imgPath" [src]="package.imgPath" style="width: 400px;height: 300px;"><br><br>
+                        <div class="middle">
+                          <div class="text">{{package.description}}</div>
+                        </div>
+                        <p class="card-subtitle" align="left">
+                          <strong>Location: </strong> {{package.location}} <br>
+                          <strong>Date: </strong> {{package.startDate}} to {{package.endDate}} <br>
+                          <strong>Available: </strong> {{package.slots}}-slots <br>
+                          <strong>Count: </strong> {{package.noOfPeoples}}-peoples <br>
+                          <strong>Price: </strong> {{package.cost | currency:'INR'}}
+                        </p>
+                      </div>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+                <br><br><br>
+              </div>
+            </ng-container>
+            <ng-container>
+              <div class="col-sm-6 detail">
+                <div class="d-flex flex-row">
+                  <div class="cc2">
+                    <div class="left">
+                      <img (click)="dec(quantity)" src="https://cdn-icons-png.flaticon.com/512/2569/2569198.png"
+                        class="dec" alt="-"> &nbsp;
+                      <span>{{quantity}}</span>&nbsp;&nbsp;&nbsp;
+                      <img class="inc" (click)="inc(quantity)" src="https://cdn-icons-png.flaticon.com/512/4315/4315609.png"
+                         alt="+"> <br><br>
+                    </div>
+                    <br><br>
+                    <div class="center">
+                      <p class="solid"><b>Total Bill : {{totalBill | currency:'INR'}}</b><br><br></p>
+                      <p *ngIf="msg!=''"   class="test red">{{msg}}</p>
+                    </div>
+                    <br><br>
+                    <button class="btn btn-success white" (click)="toPay(package.id)">Proceed To
+                      Pay</button> &nbsp;&nbsp;
+                    <button class="btn btn-danger white" (click)="close()">cancel</button>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
